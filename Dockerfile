@@ -1,13 +1,10 @@
 FROM ousefulcoursecontainers/oubrandednotebook:base
 
-COPY postBuild postBuild
-COPY requirements.txt requirements.txt
-
 USER root
 
 RUN apt-get update && apt-get install -y git gcc \
 	&& pip install --no-cache Cython \
-	&& pip install --no-cache nbtutor \
+	&& pip install --no-cache nbtutor jupytergraffiti \
 		git+https://github.com/mwouts/jupytext.git \
 		git+https://github.com/rkern/line_profiler.git \
 		ipyturtle git+https://github.com/uclmr/egal.git \
