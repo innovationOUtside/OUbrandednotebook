@@ -2,7 +2,7 @@ FROM ousefulcoursecontainers/oubrandednotebook:base
 
 USER root
 
-RUN apt-get update && apt-get install -y git gcc \
+RUN apt-get update && apt-get install -y git gcc zip \
 	&& pip install --no-cache Cython \
 	&& pip install --no-cache nbtutor jupytergraffiti \
 		git+https://github.com/mwouts/jupytext.git \
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y git gcc \
 	&& jupyter nbextension enable --py --sys-prefix nbtutor \
 	&& jupyter nbextension enable skip-traceback/main \
 	&& jupyter nbextension enable --py ipyturtle \
-	&& jupyter nbextension install --py egal \
+	&& jupyter nbextension install --py --sys-prefix egal \
 	&& jupyter nbextension enable --py egal \
 	&& apt-get purge --auto-remove -y gcc git && apt-get clean
 
